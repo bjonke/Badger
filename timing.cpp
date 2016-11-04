@@ -1,7 +1,5 @@
 // INCLUDES	
 
-#include <windows.h> 
-//#include <mmsystem.h> 
 #include "Timing.h" 
 #include <time.h> 
 
