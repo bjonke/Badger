@@ -4,6 +4,17 @@
 #define KEY_DOWN(vk_code) ((GetAsyncKeyState(vk_code) & 0x8000) ? 1 : 0)
 #define KEY_UP(vk_code) ((GetAsyncKeyState(vk_code) & 0x8000) ? 0 : 1)
 
+class SDL_TILES
+{
+	SDL_TILES(){ std::cout << "Initializing SDL_TILES..." << std::endl; };
+	
+	SDL_Texture* BadAcorn;
+	SDL_Texture* Acorn;
+	SDL_Texture* Wall;
+	SDL_Texture* Exit;
+	SDL_Texture* Intro;
+};
+
 struct TILES
 {
 	HBITMAP hBadAcorn;
