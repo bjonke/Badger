@@ -1,11 +1,3 @@
-//-------------------------------------------------------------------------
-// Namn: Rickard Skeppström
-// Personnr: 790930-xxxx
-// Klass: SP6
-// E-mail: rickard_skeppstrom@msn.com alt rickard.skeppstrom@powerhouse.net
-// Lab: Projekt spel
-//-------------------------------------------------------------------------
-
 #include <iostream>
 #include <cstdio>
 using namespace std;
