@@ -1,4 +1,3 @@
-#include <windows.h>
 #include <ctime>
 #include "graphics.h"
 #include "Input.h"
