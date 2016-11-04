@@ -1,11 +1,3 @@
-//-------------------------------------------------------------------------
-// Namn: Rickard Skeppström
-// Personnr: 790930-xxxx
-// Klass: SP6
-// E-mail: rickard_skeppstrom@msn.com alt rickard.skeppstrom@powerhouse.net
-// Lab: Projekt spel
-//-------------------------------------------------------------------------
-
 #include <windows.h>
 #include <ctime>
 #include "graphics.h"
@@ -51,7 +43,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		return 0;
 	}
 	
-	// Huvudfönstret
+	// HuvudfÃ¶nstret
 	hwnd = CreateWindow (szAppName,		// Window class name
 						 TEXT ("Projekt"),	//window caption
 						 WS_OVERLAPPED | WS_BORDER,
@@ -113,7 +105,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 }
 
 /*******************************************************************************
-* LRESULT CALLBACK WndProc() sköter grovjobbet
+* LRESULT CALLBACK WndProc() skÃ¶ter grovjobbet
 /*******************************************************************************/
 LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {	
