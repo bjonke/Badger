@@ -1,5 +1,3 @@
-// Timer.cpp
-
 #include "CTimer.h"
 
 void framerate::Init(float tfps)
