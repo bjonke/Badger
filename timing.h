@@ -1,10 +1,6 @@
 #ifndef _TIMING_H_ 
 #define _TIMING_H_ 
 
-#include <windows.h> 
-
-// CLASSES 
-
 //! The timing class 
 class CTiming 
 { 
