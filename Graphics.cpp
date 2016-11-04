@@ -1,11 +1,3 @@
-//-------------------------------------------------------------------------
-// Namn: Rickard Skeppström
-// Personnr: 790930-xxxx
-// Klass: SP6
-// E-mail: rickard_skeppstrom@msn.com alt rickard.skeppstrom@powerhouse.net
-// Lab: Projekt spel
-//-------------------------------------------------------------------------
-
 //--------------------------------------------
 //	INCLUDES
 //--------------------------------------------
@@ -48,7 +40,7 @@ bool CGraphics::Init(HWND chwnd)
 
 	Logic = new CInput(FieldSize,FieldSize);
 
-	// Den används av både player 1 och 2
+	// Den anvÃ¤nds av bÃ¥de player 1 och 2
 	
 	Player.hIcon = (HBITMAP)LoadImage(NULL,"Badger.bmp",
 		IMAGE_BITMAP, 0, 0,	LR_CREATEDIBSECTION | LR_LOADFROMFILE);
@@ -82,13 +74,13 @@ bool CGraphics::Init(HWND chwnd)
 
 	gDC = GetDC(main_window_handle);
 
-	// För BackBuffer (Dubbel) buffring
+	// FÃ¶r BackBuffer (Dubbel) buffring
 	BackBuffer = CreateCompatibleDC(gDC);
 	BackBuffer_bmp = CreateCompatibleBitmap(gDC, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN));
 	Old_bmp = (HBITMAP)SelectObject(BackBuffer, BackBuffer_bmp);
 
 	//-------------------------------------------------------------------
-	// Ladddar in bmp bilder för alla objekt i spelet
+	// Ladddar in bmp bilder fÃ¶r alla objekt i spelet
 
 
 	Tile.hBadAcorn = (HBITMAP)LoadImage(NULL, "BadAcorns.bmp",
@@ -109,7 +101,7 @@ bool CGraphics::Init(HWND chwnd)
 		return false;
 	}
 
-	// För BackBuffer (Dubbel) buffring
+	// FÃ¶r BackBuffer (Dubbel) buffring
 	BackBuffer = CreateCompatibleDC(gDC);
 	BackBuffer_bmp = CreateCompatibleBitmap(gDC, GetSystemMetrics(SM_CXSCREEN), GetSystemMetrics(SM_CYSCREEN));
 	Old_bmp = (HBITMAP)SelectObject(BackBuffer, BackBuffer_bmp);
