@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-#include <windows.h>
+
 #include "bitmap.h"
 #include "input.h"
 
