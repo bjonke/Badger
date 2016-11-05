@@ -2,60 +2,61 @@
 #include "graphics.h"
 #include "Input.h"
 
-
-//--------------------------------------------------------------------
-// Globals
-//--------------------------------------------------------------------
 CGraphics* g_Game = 0;
 
-//--------------------------------------------------------------------
-// Functions
-//--------------------------------------------------------------------
-LRESULT CALLBACK WndProc (HWND, UINT, WPARAM, LPARAM);
-
-//--------------------------------------------------------------------
-//	Main window entry point
-//--------------------------------------------------------------------
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
-				   PSTR szCmdLine, int iCmdShow) 
+#include <SDL.h>
+ 
+int main(int argc, char ** argv)
 {
-	TCHAR szAppName[] = "Projekt";
-	HWND hwnd;
-	MSG			msg = {0};
-	WNDCLASS	wndclass ;
-
-	wndclass.style			= CS_HREDRAW | CS_VREDRAW ;
-	wndclass.lpfnWndProc	= WndProc ;
-	wndclass.cbClsExtra		= 0 ;
-	wndclass.cbWndExtra		= 0 ;
-	wndclass.hInstance		= hInstance ;
-	wndclass.hIcon			= LoadIcon (hInstance, IDI_APPLICATION) ;
-	wndclass.hCursor		= LoadCursor (hInstance, IDC_ARROW) ;
-	wndclass.hbrBackground	= (HBRUSH) GetStockObject (BLACK_BRUSH) ;
-	wndclass.lpszMenuName	= NULL ;
-	wndclass.lpszClassName	= szAppName ;
-
-	if (!RegisterClass (&wndclass))
-	{
-		MessageBox (NULL, TEXT ("This program requires a advanced windows"),
-					szAppName, MB_ICONERROR) ;
-		return 0;
-	}
-	
-	// Huvudfönstret
-	hwnd = CreateWindow (szAppName,		// Window class name
-						 TEXT ("Projekt"),	//window caption
-						 WS_OVERLAPPED | WS_BORDER,
-						 0,
-						 0,
-						 646,
-						 525,
-						 NULL,
-						 NULL,
-						 hInstance,
-						 NULL) ;
-
-
+    // variables
+ 
+    bool quit = false;
+    SDL_Event event;
+    int x = 288;
+    int y = 208;
+ 
+    // init SDL
+ 
+    SDL_Init(SDL_INIT_VIDEO);
+    SDL_Window * window = SDL_CreateWindow("SDL2 Keyboard/Mouse events",
+        SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, 0);
+    SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, 0);
+ 
+    SDL_Surface * image = SDL_LoadBMP("spaceship.bmp");
+    SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer,
+        image);
+    SDL_FreeSurface(image);
+ 
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+ 
+    // handle events
+ 
+    while (!quit)
+    {
+        SDL_WaitEvent(&event);
+ 
+        switch (event.type)
+        {
+        case SDL_QUIT:
+            quit = true;
+            break;
+        }
+ 
+        SDL_Rect dstrect = { x, y, 64, 64 };
+ 
+        SDL_RenderClear(renderer);
+        SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+        SDL_RenderPresent(renderer);
+    }
+ 
+    // cleanup SDL
+ 
+    SDL_DestroyTexture(texture);
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+ 
+/* WINDOWS */
 	srand ( time(0) );
 
 	g_Game = new CGraphics(5,5);
@@ -100,22 +101,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		}
 	}
 	delete g_Game;
-	return(msg.wParam) ;
-}
-
-/*******************************************************************************
-* LRESULT CALLBACK WndProc() sköter grovjobbet
-/*******************************************************************************/
-LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
-{	
-	switch (message)
-	{
-		case WM_QUIT:
-			return 0;
-
-		case WM_DESTROY:
-			PostQuitMessage (0) ;
-			return 0;
-	}
-	return DefWindowProc (hwnd, message, wParam, lParam) ;
+/* ******* */
+	
+    return 0;
 }
