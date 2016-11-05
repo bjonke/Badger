@@ -1,13 +1,6 @@
-// INCLUDES	
-
 #include "Timing.h" 
 #include <time.h> 
 
-// GLOBALS 
-
-// CONSTRUCTORS 
-
-// Constructor 
 CTiming::CTiming() 
 {
 	ticksPerSecond.QuadPart = 0;
